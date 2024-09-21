@@ -1,0 +1,28 @@
+
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+<section>
+
+    <article id="course.pk">
+      {% if course.course_image %}
+      <picture>
+        <img width="300px" src="{{course.course_image.url}}" alt="">
+      </picture>
+      <picture>
+        <img src="{{course.course_image.thumbnails.small.url}}" alt="">
+      </picture>
+      {% endif %}
+      <h1>{{ course.title }}</h1>
+      <p>publication date: {{ course.created_at }}</p>
+      <div>
+        {{course.content|safe}}
+      </div>
+      {% if course.content_list %}
+      <p><a href="{{course.content_list.url}}" download>Download</a></p>
+      {% endif %}
+      <p><a href="{% url 'courses:courses' %}">Go back to courses</a></p>
+    </article>
+
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+
+<p>Search Courses</p>
+<!-- <div>
+    <form action="" method="get">
+        <h2>Courses Search</h2>
+        <div>
+            <label for="">What are you looking for?</label>
+            <input type="text" name="s" required value="{% if request.GET %}{{request.GET.s}}{% endif %}">
+            <button>Search</button>
+        </div>
+    </form>
+</div> -->
+<div>
+    <form action="" method="get">
+        {{form.as_p}}
+        <button>Send</button>
+    </form>
+</div>
+
+{% if request.GET %}
+<div>
+    <h3>Search results from {{ request.GET.s }}</h3>
+    <h4>Courses</h4>
+    {% if courses %}
+    <ul>
+        {% for course in courses %}
+        <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are not results</p>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

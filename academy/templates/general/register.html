@@ -1,0 +1,35 @@
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+
+<!-- <div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2>Data register</h2>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="coment">Coment</label>
+            <textarea name="coment" id="coment">Coment here</textarea>
+        </div>
+        <button>Send</button>
+    </form>
+</div> -->
+{% if success %}
+    <p>You have been succesfully register</p>
+{% else %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2>Data register</h2>
+        {{form.as_p}}
+        <button>Send</button>
+    </form>
+{% endif %}
+
+{% endblock %}

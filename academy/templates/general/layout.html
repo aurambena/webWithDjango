@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+        <li><a href="{% url 'information:home' %}">Home</a></li>
+        <li><a href="{% url 'information:whoarewe' %}">Who are we?</a></li>
+        <li><a href="{% url 'courses:courses' %}">Courses</a></li>
+        <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+        <li><a href="{% url 'information:search' %}">Search</a></li>
+        <li><a href="{% url 'information:register' %}">Register</a></li>
+        <li><a href="{% url 'information:contact' %}">Contact</a></li>
+        <li><a href="{% url 'information:account' %}">Create account</a></li>
+
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'information:logout' %}">Log out</a></li>
+        {% endif %}
+        </ul>
+
+        {% if request.user.is_authenticated %}
+            <p>You are loged in as {{request.user}}</p>
+        {% else %}
+            <li><a href="{% url 'information:login' %}">Login</a></li>
+        {% endif %}
+      </nav>
+      {% block page_content %}
+    
+      {% endblock %}
+      <footer>
+        © 2023 - Todos los derechos reservados
+      </footer>
+</body>
+</html>

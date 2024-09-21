@@ -1,0 +1,15 @@
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+
+{% if error_message %}
+    <p>{{error_message}}</p>
+{% else %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>Send</button>
+    </form>
+{% endif %}
+
+{% endblock %}

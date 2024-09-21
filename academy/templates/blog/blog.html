@@ -1,0 +1,20 @@
+
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+<section>
+    <h1>Just came</h1>
+
+    {% for p in post %}
+    <article id="post.pk">
+      <h2>{{ p.title }}</h2>
+      <p>publication date: {{ p.created_at }}</p>
+      <div>
+        {{p.content|truncatechars:100}}...
+      </div>
+      <p><a href="{% url 'blog:blog_detail' p.pk %}">See more</a></p>
+    </article>
+
+    {% endfor %}
+</section>
+{% endblock %}

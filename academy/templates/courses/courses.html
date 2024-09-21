@@ -1,0 +1,15 @@
+{% extends 'general/layout.html' %}
+{% block page_content %}
+{% for c in course %}
+    <article id="c.pk">
+      <h2>{{ c.title }}</h2>
+      <p>publication date: {{ c.created_at }}</p>
+      <div>
+        {{c.content|truncatechars:100|safe}}...
+      </div>
+      <p><a href="{% url 'courses:courses_detail' c.pk %}">See more</a></p>
+    </article>
+
+    {% endfor %}
+{% endblock %}
+
