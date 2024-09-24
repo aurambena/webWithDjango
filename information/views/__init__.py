@@ -6,6 +6,10 @@ from .register import *
 from .login import *
 from .logout import *
 from .create_account import *
+from .testing_view import *
+from .questions import *
+
+
 
 
 

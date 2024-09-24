@@ -1,0 +1,18 @@
+
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+<section>
+    <h1>Just came</h1>
+
+    <article id="post.pk">
+      <h1>{{ blog_news_detail.title }}</h1>
+      <p>publication date: {{ blog_news_detail.created_at }}</p>
+      <div>
+        {{blog_news_detail.content}}
+      </div>
+      <p><a href="{% url 'information:news_list'%}">Go back to news</a></p>
+    </article>
+
+</section>
+{% endblock %}

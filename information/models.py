@@ -25,3 +25,17 @@ class Contact (models.Model):
 
     def __str__(self):
         return self.name
+    
+class Questions(models.Model):
+    topic = models.CharField(
+        verbose_name='topic',
+        max_length=50
+        )
+    
+    question = models.CharField(
+        verbose_name='question',
+        max_length=200,
+        )
+    
+    def __str__(self):
+        return self.question

@@ -1,0 +1,16 @@
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+
+<h1>User Questions</h1>
+
+<ul>
+    <li><a href="{% url 'information:newquestion'%}">Add Question</a></li>
+</ul>
+
+<h2>Questions List</h2>
+{% for q in questions %}
+<li><a href="{% url 'information:questiondetails' q.pk%}">{{q.topic}}</a></li>
+
+{% endfor %}
+{% endblock %}

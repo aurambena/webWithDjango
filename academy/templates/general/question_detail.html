@@ -1,0 +1,15 @@
+
+{% extends 'general/layout.html' %}
+
+{% block page_content %}
+<section>
+  <article id="question_detail.pk">
+    <h1>{{ question_detail.topic }}</h1>
+    <p>{{ question_detail.question }}</p>
+    <p><a href="{% url 'information:updatequestion' question_detail.pk %}">Update Question</a></p> 
+    <p><a href="{% url 'information:deletequestion' question_detail.pk %}" >Delete Question</a></p>     
+    <p><a href="{% url 'information:questionlist'  %}">Go back to questions</a></p>
+  </article>
+
+</section>
+{% endblock %}

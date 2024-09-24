@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from information.views import home_view, contact_view, who_are_we_view, search_view, register_view, login_view, account_view
+from information.views import home_view, contact_view, who_are_we_view, search_view, register_view, login_view, account_view, TestingView, TestingTemplateView, QuestionsCreateView, QuestionsList
 from courses.views import courses_view, courses_detail
-from blog.views import blog_view, blog_detail
+from blog.views import blog_view, blog_detail, new_post_view, NewsList
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('courses.urls',namespace='courses_detail')),
     path('', include('blog.urls',namespace='blog')),
     path('', include('blog.urls',namespace='blog_detail')),
+    path('', include('blog.urls',namespace='post')),
 
 
     path('admin/', admin.site.urls),

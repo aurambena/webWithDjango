@@ -16,7 +16,8 @@ class Post(models.Model):
     
     created_at = models.DateTimeField(
         verbose_name='Date and time of creation',
-        default=timezone.now
+        default=timezone.now,
+                
     )
 
     show_home = models.BooleanField(
