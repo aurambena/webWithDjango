@@ -12,6 +12,6 @@ class ContactResource(admin.ModelAdmin):
 @admin.register(Questions)
 class ContactResource(admin.ModelAdmin):
     model = Questions
-    list_display = ('topic', 'question', 'pk')
+    list_display = ('topic', 'question', 'created_by','pk')
     
     

@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from courses.models import Course
 from information.forms import AccountForm
-from information.models import Contact
+from information.models import Contact, CreateAccount
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib import messages
 
 def account_view(request):
         if request.POST:
@@ -28,6 +29,7 @@ def account_view(request):
                 context = {
                      'message': 'User successfully created'
                 }
+
                 return render (request, 'general/create_account.html', context)
 
                 
@@ -44,3 +46,17 @@ def account_view(request):
               'form':form,
         }
         return render (request, 'general/create_account.html',context)
+
+class AccountCreateView(CreateView):
+      model = CreateAccount
+      fields = [
+          'username',
+          'first_name',
+          'last_name',
+          'email',
+          'password1',
+          'password2',
+          ]
+      print(fields)
+      template_name = 'general/new_account.html'
+      success_url = reverse_lazy('information:home')

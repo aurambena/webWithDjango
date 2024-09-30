@@ -6,7 +6,6 @@ from .views import(
     who_are_we_view,
     search_view,
     register_view,
-    login_view,
     logout_view,
     account_view,
     TestingView,
@@ -17,6 +16,7 @@ from .views import(
     QuestionsDetail,
     QuestionsUpdateView,
     QuestionsDeleteView,
+    AccountCreateView,
 
 )
 
@@ -27,9 +27,9 @@ urlpatterns = [
     path('who_are_we/', who_are_we_view, name='whoarewe'),   
     path('search/', search_view, name='search'),   
     path('register/', register_view, name='register'),   
-    path('login/', login_view, name='login'), 
     path('login/form_view/', LoginView.as_view(), name='loginform'),   
-    path('logout/', logout_view, name='logout'),   
+    path('logout/', logout_view, name='logout'), 
+    path('new_account/', AccountCreateView.as_view(), name='newaccount'),     
     path('create_account/', account_view, name='account'),   
     path('testing/', TestingView.as_view(), name='testing'),   
     path('templateview/', TestingTemplateView.as_view(), name='testingtemplateview'), 

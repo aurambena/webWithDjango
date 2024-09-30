@@ -15,8 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-from information.views import home_view, contact_view, who_are_we_view, search_view, register_view, login_view, account_view, TestingView, TestingTemplateView, QuestionsCreateView, QuestionsList
+from django.urls import include, path, re_path
+from information.views import home_view, contact_view, who_are_we_view, search_view, register_view, account_view, LoginForm, TestingView, TestingTemplateView, QuestionsCreateView, QuestionsList, AccountCreateView, AALoginView
 from courses.views import courses_view, courses_detail
 from blog.views import blog_view, blog_detail, new_post_view, NewsList
 from debug_toolbar.toolbar import debug_toolbar_urls
@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    
+    re_path(r'^rosetta/', include('rosetta.urls')),
     path('', include('information.urls',namespace='information')),
     path('', include('courses.urls',namespace='courses')),   
     path('', include('courses.urls',namespace='courses_detail')),

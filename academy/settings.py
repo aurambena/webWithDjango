@@ -55,7 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+     
 ]
 
 ROOT_URLCONF = 'academy.urls'
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'academy.context_processor.get_key',
             ],
         },
     },
@@ -121,6 +123,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGE_CODE = 'en-US'
+
+LANGUAGES = {
+    ('en', 'English'),
+    ('es', 'Español'),
+}
+
+# LOCALE_PATHS = {
+#     BASE_DIR/'locale'
+# }
 
 
 # Static files (CSS, JavaScript, Images)
@@ -192,3 +205,24 @@ EMAIL_USE_TLS = True
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+import environ
+import os
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# KEY = os.getenv('KEY', 'default-key')
+# print(KEY)
+
+KEY=env('KEY')
+COLOR=env('COLOR')

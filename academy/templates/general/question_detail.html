@@ -6,8 +6,10 @@
   <article id="question_detail.pk">
     <h1>{{ question_detail.topic }}</h1>
     <p>{{ question_detail.question }}</p>
-    <p><a href="{% url 'information:updatequestion' question_detail.pk %}">Update Question</a></p> 
-    <p><a href="{% url 'information:deletequestion' question_detail.pk %}" >Delete Question</a></p>     
+    <p><a href="{% url 'information:updatequestion' question_detail.pk %}">Update Question</a></p>
+  
+    <p>{% if question_detail.created_by == request.user %} 
+      <a href="{% url 'information:deletequestion' question_detail.pk %}" >Delete Question</a>{% endif%}</p>     
     <p><a href="{% url 'information:questionlist'  %}">Go back to questions</a></p>
   </article>
 

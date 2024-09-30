@@ -16,25 +16,41 @@
         <li><a href="{% url 'information:register' %}">Register</a></li>
         <li><a href="{% url 'information:contact' %}">Contact</a></li>
         <li><a href="{% url 'information:account' %}">Create account</a></li>
+        <li><a href="{% url 'information:newaccount' %}">Create account</a></li>
+
         <li><a href="{% url 'information:questionlist' %}">Questions</a></li>
 
-
         {% if request.user.is_authenticated %}
-            <li><a href="{% url 'information:logout' %}">Log out</a></li>
-        {% endif %}
-        </ul>
+        <li><a href="{% url 'information:logout' %}">Log out</a></li>
+    {% endif %}
+    </ul>
 
-        {% if request.user.is_authenticated %}
-            <p>You are loged in as {{request.user}}</p>
-        {% else %}
-            <li><a href="{% url 'information:login' %}">Login</a></li>
-        {% endif %}
-      </nav>
-      {% block page_content %}
+    {% if request.user.is_authenticated  %}
     
-      {% endblock %}
+        <p>You are loged in as {{request.user}}</p>
+    {% else %}
+        <li><a href="{% url 'information:loginform' %}">Login</a></li>
+    {% endif %}
+  </nav>
+
+
+{% if messages %}        
+    <section class="messages">
+    <ul>
+        {% for message in messages %}
+            <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    </section>
+{% endif %}
+{% block page_content %}
+    
+{% endblock %}
+
+
+
       <footer>
-        © 2023 - Todos los derechos reservados
+        © 2024 - Todos los derechos reservados
       </footer>
 </body>
 </html>
